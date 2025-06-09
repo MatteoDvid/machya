@@ -17,38 +17,38 @@ Un tableau de bord personnel et professionnel pour centraliser toutes les ressou
 
 ## ⚙️ Stack technique
 
-| Technologie     | Usage                                       |
-|-----------------|---------------------------------------------|
-| **Next.js 14**  | Frontend avec App Router                    |
-| **Tailwind CSS**| UI rapide, responsive, lisible              |
-| **Supabase**    | Backend (PostgreSQL + Auth + API)           |
-| **TypeScript**  | Typage strict, lisibilité et fiabilité      |
-| **React Flow** (à venir) | Visualisation interactive du skill tree |
-| **OpenAI API** (à venir) | Résumés automatiques des ressources |
+| Technologie        | Usage                                              |
+|--------------------|----------------------------------------------------|
+| **Next.js 14**     | Frontend avec App Router                           |
+| **Tailwind CSS**   | UI rapide, responsive, lisible                     |
+| **Supabase**       | Backend (PostgreSQL + Auth + API)                  |
+| **TypeScript**     | Typage strict, lisibilité et fiabilité             |
+| **React Flow**     | Visualisation interactive du skill tree            |
+| **OpenAI API**     | (à venir) Résumés automatiques des ressources      |
 
 ---
 
 ## 📦 Fonctionnalités v1 (déjà codées)
 
 - [x] Création de ressources techniques (titre, lien, type, tags, statut)
-- [x] Affichage dynamique des ressources (liens cliquables)
-- [x] Création de compétences (nom, description, niveau, domaine)
-- [x] Affichage de toutes les compétences
-- [x] Connexion complète à Supabase (insert + select)
-- [x] Typage pro avec TypeScript
-- [x] UI responsive via Tailwind
+- [x] Affichage dynamique des ressources
+- [x] Création de compétences avec niveau, domaine, progression
+- [x] Liaison des ressources et compétences via table pivot
+- [x] Visualisation interactive du graphe des compétences
+- [x] Coloration des nœuds selon domaine (IA, Web…)
+- [x] Affichage des ressources associées à chaque skill
+- [x] Sidebar gauche dynamique déclenchée au double-clic
 
 ---
 
 ## 🔜 Prochaines fonctionnalités prévues
 
-- [ ] Lier des ressources à des compétences existantes (many-to-many)
+- [ ] Modifier la progression d’une compétence depuis le graphe
 - [ ] Formulaire d’édition et suppression
-- [ ] Visualisation du skill tree avec `React Flow`
-- [ ] Page `/skills` dédiée, page `/resources` dédiée
-- [ ] Résumé automatique d’un article via OpenAI API
-- [ ] Interface utilisateur améliorée et professionnelle
-- [ ] Gestion multi-utilisateurs avec Supabase Auth
+- [ ] Pages dédiées : `/skills`, `/resources`, `/graph`
+- [ ] Résumé automatique via OpenAI
+- [ ] Interface utilisateur avancée et professionnelle
+- [ ] Gestion multi-utilisateurs (Supabase Auth)
 
 ---
 
@@ -66,30 +66,11 @@ Un tableau de bord personnel et professionnel pour centraliser toutes les ressou
 
 .
 ├── src/
-│ ├── app/ → Pages Next.js (App Router)
-│ │ └── page.tsx → Page principale (ajout + affichage)
-│ ├── lib/ → Fichiers de connexion (ex: supabaseClient)
-│ ├── types/ → Définition des types TypeScript
-│
-├── public/ → Fichiers statiques (favicon, images...)
-├── README.md → Présentation complète du projet
+│   ├── app/
+│   │   ├── page.tsx → Ajout et affichage des ressources/compétences
+│   │   └── graph/page.tsx → Visualisation du skill tree (React Flow)
+│   ├── lib/ → Supabase client, utils
+│   ├── types/ → Types TypeScript centralisés
+├── public/ → Fichiers statiques (favicon, illustrations)
+├── README.md → Présentation du projet
 ├── progress.md → Journal d'avancement
-
-yaml
-Copier
-Modifier
-
----
-
-## 🧠 Auteur
-
-Développé par un CTO en devenir, bâtisseur de TechSudo — avec une vision de scalabilité, excellence et productivité.  
-yaml
-Copier
-Modifier
-
----
-
-## 📜 Licence
-
-Projet personnel. Libre de réutilisation privée, mais pas de distribution publique sans accord.
