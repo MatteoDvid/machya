@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠 TechSudo Knowledge Dashboard
 
-## Getting Started
+Un tableau de bord personnel et professionnel pour centraliser toutes les ressources, compétences et benchmarks liés à la montée en puissance de TechSudo — la future plus grande boîte de conseil tech de France 🇫🇷🚀
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎯 Objectif du projet
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Créer un **QG numérique personnel** pour maîtriser ses connaissances techniques
+- Structurer une **base de données intelligente** des ressources (articles, vidéos, papers…)
+- Construire un **skill tree dynamique** des compétences (avec graphe visuel et progression)
+- Lier chaque ressource à une ou plusieurs compétences
+- Intégrer à terme des **fonctionnalités IA avancées** (résumés automatiques, suggestions de lecture)
+- Avoir une UX rapide, propre, évolutive, et **full customisable** pour les besoins de TechSudo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Stack technique
 
-## Learn More
+| Technologie     | Usage                                       |
+|-----------------|---------------------------------------------|
+| **Next.js 14**  | Frontend avec App Router                    |
+| **Tailwind CSS**| UI rapide, responsive, lisible              |
+| **Supabase**    | Backend (PostgreSQL + Auth + API)           |
+| **TypeScript**  | Typage strict, lisibilité et fiabilité      |
+| **React Flow** (à venir) | Visualisation interactive du skill tree |
+| **OpenAI API** (à venir) | Résumés automatiques des ressources |
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Fonctionnalités v1 (déjà codées)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [x] Création de ressources techniques (titre, lien, type, tags, statut)
+- [x] Affichage dynamique des ressources (liens cliquables)
+- [x] Création de compétences (nom, description, niveau, domaine)
+- [x] Affichage de toutes les compétences
+- [x] Connexion complète à Supabase (insert + select)
+- [x] Typage pro avec TypeScript
+- [x] UI responsive via Tailwind
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔜 Prochaines fonctionnalités prévues
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [ ] Lier des ressources à des compétences existantes (many-to-many)
+- [ ] Formulaire d’édition et suppression
+- [ ] Visualisation du skill tree avec `React Flow`
+- [ ] Page `/skills` dédiée, page `/resources` dédiée
+- [ ] Résumé automatique d’un article via OpenAI API
+- [ ] Interface utilisateur améliorée et professionnelle
+- [ ] Gestion multi-utilisateurs avec Supabase Auth
+
+---
+
+## 💡 Vision long terme
+
+> Ce projet est une **brique stratégique** pour TechSudo :
+- Il sert de hub personnel de montée en compétences
+- Il devient un **template réutilisable** pour les clients (ex : version Knowledge OS d’entreprise)
+- Il structure une approche unique du **growth personnel par la tech**
+- Il pourra être intégré dans un SaaS, un CRM, ou un outil d’apprentissage immersif
+
+---
+
+## 📁 Structure du projet
+
+.
+├── src/
+│ ├── app/ → Pages Next.js (App Router)
+│ │ └── page.tsx → Page principale (ajout + affichage)
+│ ├── lib/ → Fichiers de connexion (ex: supabaseClient)
+│ ├── types/ → Définition des types TypeScript
+│
+├── public/ → Fichiers statiques (favicon, images...)
+├── README.md → Présentation complète du projet
+├── progress.md → Journal d'avancement
+
+yaml
+Copier
+Modifier
+
+---
+
+## 🧠 Auteur
+
+Développé par un CTO en devenir, bâtisseur de TechSudo — avec une vision de scalabilité, excellence et productivité.  
+yaml
+Copier
+Modifier
+
+---
+
+## 📜 Licence
+
+Projet personnel. Libre de réutilisation privée, mais pas de distribution publique sans accord.
