@@ -38,6 +38,8 @@ Un tableau de bord personnel et professionnel pour centraliser toutes les ressou
 - [x] Coloration des nœuds selon domaine (IA, Web…)
 - [x] Affichage des ressources associées à chaque skill
 - [x] Sidebar gauche dynamique déclenchée au double-clic
+- [x] **Ajout d’un champ de notes personnelles par ressource**
+
 
 ---
 
@@ -49,6 +51,7 @@ Un tableau de bord personnel et professionnel pour centraliser toutes les ressou
 - [ ] Résumé automatique via OpenAI
 - [ ] Interface utilisateur avancée et professionnelle
 - [ ] Gestion multi-utilisateurs (Supabase Auth)
+
 
 ---
 
