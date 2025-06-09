@@ -24,6 +24,7 @@ type Resource = {
   id: string
   title: string
   url: string
+  notes?: string
 }
 
 function getColorByDomain(domain: string): string {
@@ -47,6 +48,7 @@ export default function SkillGraph() {
   const [edges, setEdges, onEdgesChange] = useEdgesState([])
   const [selectedSkill, setSelectedSkill] = useState<Skill | null>(null)
   const [resources, setResources] = useState<Resource[]>([])
+  const [notes, setNotes] = useState("")
 
   useEffect(() => {
     const fetchSkills = async () => {
@@ -154,12 +156,27 @@ export default function SkillGraph() {
                   <a href={res.url} target="_blank" rel="noopener noreferrer" className="underline">
                     {res.title}
                   </a>
+                  {res.notes && (
+                    <p className="mt-2 text-sm italic text-gray-400">
+                      {res.notes}
+                    </p>
+                  )}
                 </li>
               ))}
             </ul>
           ) : (
             <p className="text-sm text-gray-500">Aucune ressource liée.</p>
           )}
+
+          <div className="mt-6">
+            <label className="block mb-2 text-sm font-medium">Notes personnelles</label>
+            <textarea
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              placeholder="Ajoute tes remarques, résumés, idées…"
+              className="w-full p-2 border rounded-md bg-surface text-white"
+            />
+          </div>
         </div>
       )}
     </div>

@@ -14,7 +14,8 @@ export default function HomePage() {
     type: '',
     status: 'à lire',
     tags: '',
-    skills: [] as string[]
+    skills: [] as string[],
+    notes: ''
   })
 
   const [skillForm, setSkillForm] = useState({
@@ -39,7 +40,7 @@ export default function HomePage() {
     fetchSkills()
   }, [])
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setForm(prev => ({ ...prev, [name]: value }))
   }
@@ -51,12 +52,12 @@ export default function HomePage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const { title, url, type, status, tags, skills: selectedSkills } = form
+    const { title, url, type, status, tags, notes, skills: selectedSkills } = form
     const tagArray = tags.split(',').map(t => t.trim())
 
     const { data, error } = await supabase
       .from('resources')
-      .insert([{ title, url, type, status, tags: tagArray }])
+      .insert([{ title, url, type, status, tags: tagArray, notes }])
       .select()
 
     if (error || !data || data.length === 0) {
@@ -75,7 +76,7 @@ export default function HomePage() {
 
       alert('Ressource ajoutée ✅')
       setResources([...resources, newResource])
-      setForm({ title: '', url: '', type: '', status: 'à lire', tags: '', skills: [] })
+      setForm({ title: '', url: '', type: '', status: 'à lire', tags: '', skills: [], notes: '' })
     }
   }
 
@@ -105,6 +106,11 @@ export default function HomePage() {
 
   return (
     <main className="p-6 md:p-10 max-w-4xl mx-auto font-dev bg-background min-h-screen text-foreground">
+      <div className="mb-8 flex justify-end">
+        <a href="/graph" className="inline-flex items-center gap-2 bg-accent text-black px-4 py-2 rounded shadow hover:bg-blue-400 transition font-semibold">
+          🗺️ Visualiser le Graphe
+        </a>
+      </div>
       <h1 className="text-3xl font-bold mb-10 text-accent">📁 Ajoute une ressource</h1>
 
       <form onSubmit={handleSubmit} className="space-y-4 mb-14">
@@ -122,6 +128,13 @@ export default function HomePage() {
             <option key={skill.id} value={skill.id}>{skill.name} ({skill.domain})</option>
           ))}
         </select>
+        <textarea
+          name="notes"
+          placeholder="Notes personnelles (résumé, idées, liens utiles...)"
+          value={form.notes}
+          onChange={handleChange}
+          className={inputStyle + " resize-none h-28"}
+        />
         <button type="submit" className="bg-accent hover:bg-blue-400 text-black px-6 py-2 rounded shadow transition">
           + Ajouter
         </button>
@@ -136,6 +149,14 @@ export default function HomePage() {
             <a href={res.url} target="_blank" className="text-accent underline">🔗 Lien</a>
             {Array.isArray(res.tags) && res.tags.length > 0 && (
               <p className="text-xs mt-2 text-gray-500">🏷️ {res.tags.join(', ')}</p>
+            )}
+            {res.notes && (
+              <p className="text-sm italic text-gray-400 mt-2">
+                📝 {res.notes}
+              </p>
+            )}
+            {Array.isArray(res.skills) && res.skills.length > 0 && (
+              <p className="text-xs mt-2 text-gray-500">🧠 {res.skills.map(s => skills.find(sk => sk.id === s)?.name).join(', ')}</p>
             )}
           </li>
         ))}
